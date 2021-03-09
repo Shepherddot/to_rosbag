@@ -12,7 +12,6 @@
 
 class TimeParser{
  public:
-  TimeParser(std::string dataset_path);
   TimeParser(std::vector<uint64_t> time_list);
 
   std::vector<ros::Time> getTimeList();

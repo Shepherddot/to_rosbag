@@ -9,10 +9,10 @@
 
 #include <rosbag/bag.h>
 
-#include "../include/to_rosbag/image_parser.h"
-#include "../include/to_rosbag/pose_parser.h"
+#include "image_parser.h"
+#include "pose_parser.h"
 
-class ToRosBag{
+class ToRosBag {
  public:
   ToRosBag(std::string bag_path, std::string dataset_path);
 

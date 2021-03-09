@@ -134,9 +134,11 @@ src/to_rosbag.cc
 src/image_parser.cc
 src/pose_parser.cc
 src/time_parser.cc
+src/common.cc
 )
 
 target_link_libraries(${PROJECT_NAME}
+${catkin_LIBRARIES}
 ${OpenCV_LIBRARIES}
 )
 
@@ -163,6 +165,7 @@ add_executable(${PROJECT_NAME}_node src/main.cc)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node
 ${catkin_LIBRARIES}
+${PROJECT_NAME}
 )
 
 #############

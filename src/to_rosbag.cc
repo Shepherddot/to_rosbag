@@ -10,7 +10,7 @@
 
 #include "../include/to_rosbag/common.h"
 
-const int kCamNum = 3;
+const int kCamNum = 1;
 
 ToRosBag::ToRosBag(std::string bag_path, std::string dataset_path) {
   bag_.open(bag_path, rosbag::bagmode::Write);
@@ -25,11 +25,9 @@ void ToRosBag::toParserImage(std::string dataset_path) {
   std::string righ_cam_base_name = "/mono_right";
 
   std::vector<std::pair<std::string, std::string>> image_path_list;
-  for (int i = 0; i < kCamNum; i++) {
-    image_path_list.emplace_back(dataset_path + left_cam_base_name + ".timestamp", dataset_path + left_cam_base_name);
-    image_path_list.emplace_back(dataset_path + rear_cam_base_name + ".timestamp", dataset_path + rear_cam_base_name);
-    image_path_list.emplace_back(dataset_path + righ_cam_base_name + ".timestamp", dataset_path + righ_cam_base_name);
-  }
+  image_path_list.emplace_back(dataset_path + left_cam_base_name + ".timestamp", dataset_path + left_cam_base_name);
+  // image_path_list.emplace_back(dataset_path + rear_cam_base_name + ".timestamp", dataset_path + rear_cam_base_name);
+  // image_path_list.emplace_back(dataset_path + righ_cam_base_name + ".timestamp", dataset_path + righ_cam_base_name);
 
   ip_ptr_ = std::make_shared<ImageParser>(image_path_list);
 
@@ -42,7 +40,7 @@ void ToRosBag::toParserImage(std::string dataset_path) {
 
     for (int i = 0; i < cam_time_list.size(); i++) {
       sensor_msgs::Image image_msg;
-      imageToRos(cam_image_list[i], &image_msg);
+      Common::imageToRos(cam_image_list[i], &image_msg);
       image_msg.header.stamp = cam_time_list[i];
       image_msg.header.frame_id = i;
 
@@ -81,6 +79,6 @@ void ToRosBag::toParserPose(std::string dataset_path) {
 
     bag_.write("/car/odom", time_list[i], odo_msg);
   }
-  
+
 }
 

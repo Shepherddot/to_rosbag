@@ -4,11 +4,14 @@
 
 #include "../include/to_rosbag/pose_parser.h"
 
+#include "../include/to_rosbag/time_parser.h"
 #include "../include/to_rosbag/common.h"
 
 #include "../thirdparty/fast-cpp-csv-parser/csv.h"
 
 PoseParser::PoseParser(std::string dataset_path_) {
+  std::string pose_path = dataset_path_ + "/rtk.csv";
+
   io::CSVReader<7> in(dataset_path_);
   in.read_header(io::ignore_extra_column, "timestamp", "northing", "easting", "down", "roll", "pitch", "yaw");
   uint64_t timestamp;
@@ -29,7 +32,7 @@ PoseParser::PoseParser(std::string dataset_path_) {
     euler.z = yaw;
 
     cv::Mat r;
-    rpyToRotMat(euler, r);
+    Common::rpyToRotMat(euler, r);
 
     cv::Mat t = (cv::Mat_<float>(3, 1) << north, east, down);
 
@@ -40,7 +43,15 @@ PoseParser::PoseParser(std::string dataset_path_) {
     pose_list_.push_back(transform);
   }
 
-  tp_ptr_ = std::make_shared<TimeParser>(raw_time);
-  time_list_ = tp_ptr_->getTimeList();
+  std::shared_ptr<TimeParser> tp_ptr = std::make_shared<TimeParser>(raw_time);
+  time_list_ = tp_ptr->getTimeList();
+}
+
+std::vector<ros::Time> PoseParser::getTimeList() {
+  return time_list_;
+}
+
+std::vector<cv::Mat> PoseParser::getPoseList() {
+  return pose_list_;
 }
 

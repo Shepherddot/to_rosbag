@@ -12,8 +12,6 @@
 #include <ros/time.h>
 #include <opencv2/core.hpp>
 
-#include "../include/to_rosbag/time_parser.h"
-
 class PoseParser{
  public:
   PoseParser(std::string dataset_path_);
@@ -22,8 +20,6 @@ class PoseParser{
   std::vector<ros::Time> getTimeList();
 
  private:
-  std::shared_ptr<TimeParser> tp_ptr_;
-
   std::vector<ros::Time> time_list_;
   std::vector<cv::Mat> pose_list_;
 };

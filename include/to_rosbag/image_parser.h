@@ -14,8 +14,6 @@
 
 #include <opencv2/core.hpp>
 
-#include "../include/to_rosbag/time_parser.h"
-
 class ImageParser {
  public:
   ImageParser(std::vector<std::pair<std::string, std::string>> dataset_path);
@@ -24,8 +22,6 @@ class ImageParser {
   std::vector<std::vector<cv::Mat>> getImageList();
 
  private:
-  std::shared_ptr<TimeParser> tp_ptr_;
-
   std::vector<std::vector<ros::Time>> image_time_list_;
   std::vector<std::vector<cv::Mat>> image_list_;
 };
