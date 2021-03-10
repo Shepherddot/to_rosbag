@@ -10,20 +10,11 @@
 #include <vector>
 #include <string>
 
-#include <ros/time.h>
-
-#include <opencv2/core.hpp>
+#include <rosbag/bag.h>
 
 class ImageParser {
  public:
-  ImageParser(std::vector<std::pair<std::string, std::string>> dataset_path);
-
-  std::vector<std::vector<ros::Time>> getImageTimeList();
-  std::vector<std::vector<cv::Mat>> getImageList();
-
- private:
-  std::vector<std::vector<ros::Time>> image_time_list_;
-  std::vector<std::vector<cv::Mat>> image_list_;
+  ImageParser(std::vector<std::pair<std::string, std::string>> dataset_path, std::vector<std::string> topic_name, std::shared_ptr<rosbag::Bag> bag);
 };
 
 #endif //TO_ROSBAG_INCLUDE_TO_ROSBAG_IMAGE_PARSER_H_

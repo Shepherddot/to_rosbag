@@ -4,14 +4,15 @@
 
 #include "../include/to_rosbag/time_parser.h"
 
-TimeParser::TimeParser(std::vector<uint64_t> time_list) {
-  for (int i = 0; i < time_list.size(); i++) {
-    ros::Time t;
-    t.fromNSec(time_list[i]);
-    time_list_.push_back(t);
-  }
+#include <string>
+
+TimeParser::TimeParser() {
 }
 
-std::vector<ros::Time> TimeParser::getTimeList() {
-  return time_list_;
+void TimeParser::timestampToRos(std::string timestamp, ros::Time *time) {
+  std::string secs = timestamp.substr(0, 10);
+  std::string nsecs = timestamp.substr(10, 16);
+  *time = ros::Time(stod(secs), stod(nsecs) * 1000);
+
+  // time->fromNSec(timestamp_ns);
 }

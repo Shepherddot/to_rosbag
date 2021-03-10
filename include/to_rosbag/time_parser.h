@@ -12,12 +12,9 @@
 
 class TimeParser{
  public:
-  TimeParser(std::vector<uint64_t> time_list);
+  TimeParser();
 
-  std::vector<ros::Time> getTimeList();
-
- private:
-  std::vector<ros::Time> time_list_;
+  void timestampToRos(std::string timestamp, ros::Time* time);
 };
 
 #endif //TO_ROSBAG_INCLUDE_TO_ROSBAG_TIME_PARSER_H_

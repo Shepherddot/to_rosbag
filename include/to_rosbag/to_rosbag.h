@@ -20,7 +20,7 @@ class ToRosBag {
   void toParserImage(std::string dataset_path);
   void toParserPose(std::string dataset_path);
 
-  rosbag::Bag bag_;
+  std::shared_ptr<rosbag::Bag> bag_;
 
   std::shared_ptr<ImageParser> ip_ptr_;
   std::shared_ptr<PoseParser> pp_ptr_;

@@ -17,7 +17,7 @@ void Common::imageToRos(const cv::Mat &image, sensor_msgs::Image *image_msg) {
   image_cv_bridge.toImageMsg(*image_msg);
 }
 
-void Common::rpyToRotMat(cv::Point3f euler, cv::Mat &rot) {
+void Common::rpyToRotMat(cv::Point3f euler, cv::Mat& rot) {
   float r = euler.x / 180.0 * M_PI;
   float p = euler.y / 180.0 * M_PI;
   float y = euler.z / 180.0 * M_PI;
