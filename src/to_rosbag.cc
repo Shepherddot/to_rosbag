@@ -8,7 +8,7 @@ ToRosBag::ToRosBag(std::string bag_path, std::string dataset_path) {
   bag_ = std::make_shared<rosbag::Bag>();
   bag_->open(bag_path, rosbag::bagmode::Write);
 
-  toParserImage(dataset_path);
+  // toParserImage(dataset_path);
   toParserPose(dataset_path);
 }
 

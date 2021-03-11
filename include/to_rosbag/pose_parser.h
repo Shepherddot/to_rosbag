@@ -17,6 +17,10 @@
 class PoseParser{
  public:
   PoseParser(std::string dataset_path, std::shared_ptr<rosbag::Bag> bag);
+
+ private:
+  bool is_this_start_ = true;
+  cv::Mat start_point_;
 };
 
 #endif //TO_ROSBAG_INCLUDE_TO_ROSBAG_POSE_PARSER_H_
