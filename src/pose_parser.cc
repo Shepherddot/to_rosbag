@@ -91,11 +91,11 @@ PoseParser::PoseParser(std::string dataset_path, std::shared_ptr<rosbag::Bag> ba
     odo_msg.pose.pose.orientation.y = q.y();
     odo_msg.pose.pose.orientation.z = q.z();
 
-/*    std::ofstream pose_file;
+    std::ofstream pose_file;
     pose_file.open("/home/liu/traj.txt", std::ios::app);
     pose_file << std::fixed << std::setprecision(6) << curr_t.toSec() << " " << odom_transform.col(3).at<float>(0) << " "
               << odom_transform.col(3).at<float>(1) << " " << odom_transform.col(3).at<float>(2) << " " << q.x() << " " << q.y() << " " << q.z()
-              << " " << q.w() << "\n";*/
+              << " " << q.w() << "\n";
 
     bag->write("/car/odom", curr_t, odo_msg);
   }
