@@ -6,9 +6,14 @@
 
 #include "../include/to_rosbag/to_rosbag.h"
 
-int main(){
-  std::string bag_path = "/home/liu/test_data_for_good/2014-11-18-13-20-12.bag";
-  std::string data_path = "/home/liu/test_data_for_good/2014-11-18-13-20-12";
+int main(int argc, char **argv) {
+  if (argc != 3){
+    std::cout << "-- Usage: to_rosbag_node bag_path dataset_path" << std::endl;
+    exit(0);
+  }
+
+  std::string bag_path(argv[1]);
+  std::string data_path(argv[2]);
 
   std::shared_ptr<ToRosBag> bag_converter = std::make_shared<ToRosBag>(bag_path, data_path);
   return 0;

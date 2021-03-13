@@ -23,3 +23,8 @@ this is a simple package to convert oxford robotcar dataset to ros1 bag.
 └── stereo.timestamps
 
 ```
+
+### Usage
+```
+to_rosbag_node /home/2014-11-18-13-20-12.bag /home/test_data/2014-11-18-13-20-12
+```
