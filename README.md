@@ -1,6 +1,6 @@
 ### oxford robotcar dataset to ros1 bag
 
-this is a simple package to convert oxford robotcar dataset to ros1 bag.
+this is a simple package to convert oxford robotcar dataset to ros1 bag. maybe it will not be maintained later.
 
 ### now support
 - [x] three channel omni image
