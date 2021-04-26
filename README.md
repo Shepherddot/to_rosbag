@@ -30,7 +30,7 @@ to_rosbag_node /home/2014-11-18-13-20-12.bag /home/test_data/2014-11-18-13-20-12
 ```
 
 ### Extrinsics
-Put the origin at the rtk coordinate system
+Put the origin at the ins coordinate system
 ```
 %YAML:1.0
 ---
